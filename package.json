@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "Velkid SSG",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Static Site for first version of Velkid",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -13,8 +13,9 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
+    "dotenv": "^8.0.0",
     "gatsby": "^2.4.2",
-    "gatsby-source-datocms": "^2.1.4",
+    "gatsby-source-datocms": "^2.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },

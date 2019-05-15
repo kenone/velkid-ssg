@@ -1,21 +1,18 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
-export default () => (
-  <StaticQuery
-    query={graphql`
-      query HeadingQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
+export default () => {
+  const data = useStaticQuery(graphql`
+    query HeroQuery {
+      datoCmsHero {
+        title
       }
-    `}
-    render={data => (
-      <section>
-        <h1>{data.site.siteMetadata.title}</h1>
-      </section>
-    )}
-  />
-)
+    }
+  `)
+
+  return (
+    <section className="hero">
+      <h1>{data.datoCmsHero.title}</h1>
+    </section>
+  )
+}
