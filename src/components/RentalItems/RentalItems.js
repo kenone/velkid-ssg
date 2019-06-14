@@ -9,7 +9,7 @@ export default () => {
         edges {
           node {
             title
-            body
+            description
             image {
               url
             }

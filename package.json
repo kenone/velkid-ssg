@@ -1,5 +1,5 @@
 {
-  "name": "Velkid SSG",
+  "name": "velkid-ssg",
   "private": true,
   "description": "Static Site for first version of Velkid",
   "version": "0.1.0",
@@ -13,11 +13,18 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
+    "babel-plugin-styled-components": "^1.10.0",
     "dotenv": "^8.0.0",
     "gatsby": "^2.4.2",
+    "gatsby-plugin-google-fonts": "^1.0.0",
+    "gatsby-plugin-layout": "^1.0.15",
+    "gatsby-plugin-sass": "^2.0.11",
+    "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-source-datocms": "^2.0.2",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "prettier": "^1.17.0"
