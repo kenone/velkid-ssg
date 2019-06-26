@@ -1,0 +1,37 @@
+@import "typography.scss";
+
+@mixin breakpoint--max-width($maxWidth) {
+  @media only screen and (max-width: $maxWidth) {
+    @content;
+  }
+}
+
+@mixin breakpoint--min-width($minWidth) {
+  @media only screen and (min-width: $minWidth) {
+    @content;
+  }
+}
+
+@mixin breakpoint--min-max-width($minWidth, $maxWidth) {
+  @media only screen and (min-width: $minWidth) and (max-width: $maxWidth) {
+    @content;
+  }
+}
+
+@mixin outer-container {
+  margin-top: 0;
+  @include breakpoint--max-width(700px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  @include breakpoint--min-width(701px) {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@mixin inner-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}

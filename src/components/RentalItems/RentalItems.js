@@ -37,5 +37,11 @@ export default () => {
     <RentalItem data={item.node} />
   ))
 
-  return <section className="rental-items">{rentalItems}</section>
+  return (
+    <section style={{ backgroundColor: "red" }} className="rental-items">
+      <div style={{ backgroundColor: "blue", height: "200px" }} />
+      />
+      {rentalItems}
+    </section>
+  )
 }

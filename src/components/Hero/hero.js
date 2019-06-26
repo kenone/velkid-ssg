@@ -1,5 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import styles from "./hero.module.scss"
 
 export default props => {
   const data = useStaticQuery(graphql`
@@ -7,16 +8,24 @@ export default props => {
       datoCmsHero {
         title
         pitch
+        image {
+          url
+        }
       }
     }
   `)
 
   return (
-    <section className="hero">
-      <div className="hero-content">
-        <h1>{data.datoCmsHero.title}</h1>
-        <div className="devider" />
-        <p>{data.datoCmsHero.pitch}</p>
+    <section
+      className={styles.hero}
+      style={{ backgroundImage: `url(${data.datoCmsHero.image.url})` }}
+    >
+      <div className={styles.heroOverlay}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>{data.datoCmsHero.title}</h1>
+          <div className={styles.devider} />
+          <p className={styles.heroPitch}>{data.datoCmsHero.pitch}</p>
+        </div>
       </div>
     </section>
   )

@@ -1,23 +1,34 @@
-// const StyledNavbar = styled.nav`
-//   background: black;
-//   color: white;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-// `
-
-// const StyledNavLinks = styled.ul`
-//   list-style: none;
-//   padding: 0;
-//   display: flex;
-
-//   li {
-//     margin-left: 50px;
-//     &:first-of-type {
-//       margin-left: 0;
-//     }
-//   }
+@import "../../scss/styles";
 
 .navbar {
-  background: blue;
+  @include outer-container();
+  background: $color--dark-grey;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navContentContainer {
+  @include inner-container();
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  @include font--light-italic();
+
+  &__item {
+    margin-left: 50px;
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+}
+
+.logo {
+  width: 100px;
 }

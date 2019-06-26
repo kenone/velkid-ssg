@@ -1,0 +1,10 @@
+@mixin font--light-italic() {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+@mixin font--bold() {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
