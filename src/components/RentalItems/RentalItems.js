@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import RentalItem from "../RentalItem/RentalItem"
+import RentalItem from "./RentalItem/RentalItem"
 
 export default () => {
   const data = useStaticQuery(graphql`
