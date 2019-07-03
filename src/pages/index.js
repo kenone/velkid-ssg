@@ -17,7 +17,6 @@ export default () => {
           ...state,
           searchWord: action.newSearchWord,
         }
-
       default:
         return state
     }

@@ -1,4 +1,6 @@
+@import "../../scss/styles.scss";
 body {
   margin: 0;
   padding: 0;
+  @include font-family--default();
 }

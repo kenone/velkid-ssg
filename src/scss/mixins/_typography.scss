@@ -8,3 +8,12 @@
   font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
+
+@mixin text--section-heading() {
+  @include font--bold();
+  font-size: 30px;
+}
+
+@mixin font-family--default() {
+  font-family: "Poppins", sans-serif;
+}
