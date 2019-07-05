@@ -1,13 +1,13 @@
 @import "../../scss/styles";
 
 .searchSection {
-  @include outer-container();
+  @include outer-container-padding-x();
+  @include outer-container-padding-y();
   background: $color--yellow;
-  padding-top: 50px;
-  padding-bottom: 50px;
 }
 
 .searchForm {
+  @include inner-container();
 }
 
 .formTitle {
@@ -19,7 +19,7 @@
   font-size: 20px;
   width: 100%;
   border: none;
-  color: $color--light-grey;
+  color: $color--medium-grey;
   letter-spacing: 1.5px;
   max-width: 500px;
   padding: 10px;

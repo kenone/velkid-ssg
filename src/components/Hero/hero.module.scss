@@ -20,7 +20,7 @@
 }
 
 .heroContent {
-  @include outer-container();
+  @include outer-container-padding-x();
   max-width: 100%;
   padding-top: 20vh;
   margin: 0 auto;

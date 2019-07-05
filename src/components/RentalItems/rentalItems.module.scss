@@ -1,0 +1,11 @@
+@import "../../scss/styles";
+
+.rentalItemsSection {
+  @include outer-container-padding-x();
+  @include outer-container-padding-y();
+  background: $color--light-grey;
+}
+
+.innerContainer {
+  @include inner-container();
+}

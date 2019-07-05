@@ -1,7 +1,7 @@
 @import "../../scss/styles";
 
 .navbar {
-  @include outer-container();
+  @include outer-container-padding-x();
   background: $color--dark-grey;
   padding-top: 20px;
   padding-bottom: 20px;

@@ -1,47 +1,46 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import RentalItem from "./RentalItem/RentalItem"
+import InnerContainer from "../HOC/InnerContainer/InnerContainer"
+import styles from "./rentalItems.module.scss"
 
 export default () => {
   const data = useStaticQuery(graphql`
     query RentalItems {
       allDatoCmsRentalItem {
-        edges {
-          node {
-            title
-            description
-            image {
-              url
-            }
-            tags {
-              tagname
-            }
-            price
-            location {
-              latitude
-              longitude
-            }
-            isAvailable
+        nodes {
+          id
+          title
+          description
+          image {
+            url
           }
+          tags {
+            tagname
+          }
+          price
+          location {
+            latitude
+            longitude
+          }
+          isAvailable
         }
       }
     }
   `)
 
-  const rentalItemsData = data.allDatoCmsRentalItem.edges
+  const rentalItemsData = data.allDatoCmsRentalItem.nodes
 
   // use UseState-hook to store items
-  console.log(rentalItemsData)
+  console.log("rental Items data", rentalItemsData)
 
-  const rentalItems = rentalItemsData.map(item => (
-    <RentalItem data={item.node} />
+  const renderRentalItems = rentalItemsData.map(item => (
+    <RentalItem key={item.id} data={item} />
   ))
 
   return (
-    <section style={{ backgroundColor: "red" }} className="rental-items">
-      <div style={{ backgroundColor: "blue", height: "200px" }} />
-      />
-      {rentalItems}
+    <section className={styles.rentalItemsSection}>
+      <InnerContainer>{renderRentalItems}</InnerContainer>
     </section>
   )
 }
