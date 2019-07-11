@@ -32,15 +32,24 @@ export default () => {
   const rentalItemsData = data.allDatoCmsRentalItem.nodes
 
   // use UseState-hook to store items
-  console.log("rental Items data", rentalItemsData)
 
   const renderRentalItems = rentalItemsData.map(item => (
-    <RentalItem key={item.id} data={item} />
+    <RentalItem
+      key={item.id}
+      title={item.title}
+      description={item.description}
+      price={item.price}
+      tags={item.tagname}
+      id={item.id}
+      image={item.image[0].url}
+    />
   ))
 
   return (
     <section className={styles.rentalItemsSection}>
-      <InnerContainer>{renderRentalItems}</InnerContainer>
+      <InnerContainer>
+        <div class={styles.grid}>{renderRentalItems}</div>
+      </InnerContainer>
     </section>
   )
 }
