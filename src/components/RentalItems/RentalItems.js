@@ -13,7 +13,9 @@ export default () => {
           title
           description
           image {
-            url
+            url: fixed(height: 400) {
+              src
+            }
           }
           tags {
             tagname
@@ -41,14 +43,14 @@ export default () => {
       price={item.price}
       tags={item.tagname}
       id={item.id}
-      image={item.image[0].url}
+      image={item.image[0].url.src}
     />
   ))
 
   return (
     <section className={styles.rentalItemsSection}>
       <InnerContainer>
-        <div class={styles.grid}>{renderRentalItems}</div>
+        <div className={styles.grid}>{renderRentalItems}</div>
       </InnerContainer>
     </section>
   )

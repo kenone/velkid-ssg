@@ -8,6 +8,7 @@ import * as actionTypes from "../state/actionTypes"
 export default () => {
   const initialState = {
     searchWord: "",
+    bookingRequestChart: [],
   }
 
   const reducer = (state, action) => {
@@ -16,6 +17,25 @@ export default () => {
         return {
           ...state,
           searchWord: action.newSearchWord,
+        }
+
+      case actionTypes.ADD_REQUEST:
+        return {
+          ...state,
+          bookingRequestChart: state.bookingRequestChart.concat(
+            action.requestItem
+          ),
+        }
+
+      case actionTypes.REMOVE_REQUEST:
+        const updateChart = state.bookingRequestChart.filter(
+          item => item.id !== action.requestItemId
+        )
+        return {
+          ...state,
+          bookingRequestChart: state.bookingRequestChart.filter(
+            item => item.id !== action.requestItemId
+          ),
         }
       default:
         return state
