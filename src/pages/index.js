@@ -2,6 +2,7 @@ import React from "react"
 import Hero from "../components/Hero/Hero"
 import SearchItems from "../components/SearchItems/SearchItems"
 import RentalItems from "../components/RentalItems/RentalItems"
+import DatePickerSection from "../components/DatePickerSection/DatePickerSection"
 import { StateProvider } from "../state"
 import * as actionTypes from "../state/actionTypes"
 
@@ -9,6 +10,17 @@ export default () => {
   const initialState = {
     searchWord: "",
     bookingRequestChart: [],
+    datePicker: {
+      focusedDate: null,
+      isDateFocused: () => false,
+      isDateSelected: () => false,
+      isDateHovered: () => false,
+      isDateBlocked: () => false,
+      isFirstOrLastSelectedDate: () => false,
+      onDateFocus: () => {},
+      onDateHover: () => {},
+      onDateSelect: () => {},
+    },
   }
 
   const reducer = (state, action) => {
@@ -46,6 +58,7 @@ export default () => {
     <StateProvider initialState={initialState} reducer={reducer}>
       <Hero />
       <SearchItems />
+      <DatePickerSection />
       <RentalItems />
     </StateProvider>
   )
