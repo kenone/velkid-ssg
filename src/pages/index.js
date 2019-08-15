@@ -10,17 +10,19 @@ export default () => {
   const initialState = {
     searchWord: "",
     bookingRequestChart: [],
-    datePicker: {
-      focusedDate: null,
-      isDateFocused: () => false,
-      isDateSelected: () => false,
-      isDateHovered: () => false,
-      isDateBlocked: () => false,
-      isFirstOrLastSelectedDate: () => false,
-      onDateFocus: () => {},
-      onDateHover: () => {},
-      onDateSelect: () => {},
-    },
+    startDate: "",
+    endDate: "",
+    // datePicker: {
+    //   focusedDate: null,
+    //   isDateFocused: () => false,
+    //   isDateSelected: () => false,
+    //   isDateHovered: () => false,
+    //   isDateBlocked: () => false,
+    //   isFirstOrLastSelectedDate: () => false,
+    //   onDateFocus: () => {},
+    //   onDateHover: () => {},
+    //   onDateSelect: () => {},
+    // },
   }
 
   const reducer = (state, action) => {
