@@ -42,6 +42,7 @@ function Day({ dayLabel, date }) {
     onDateFocus,
     onDateHover,
   } = useContext(DatepickerContext)
+
   const {
     isSelected,
     isSelectedStartOrEnd,

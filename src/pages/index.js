@@ -10,19 +10,10 @@ export default () => {
   const initialState = {
     searchWord: "",
     bookingRequestChart: [],
-    startDate: "",
-    endDate: "",
-    // datePicker: {
-    //   focusedDate: null,
-    //   isDateFocused: () => false,
-    //   isDateSelected: () => false,
-    //   isDateHovered: () => false,
-    //   isDateBlocked: () => false,
-    //   isFirstOrLastSelectedDate: () => false,
-    //   onDateFocus: () => {},
-    //   onDateHover: () => {},
-    //   onDateSelect: () => {},
-    // },
+    date: {
+      startDate: null,
+      endDate: null,
+    },
   }
 
   const reducer = (state, action) => {
@@ -42,15 +33,24 @@ export default () => {
         }
 
       case actionTypes.REMOVE_REQUEST:
-        const updateChart = state.bookingRequestChart.filter(
-          item => item.id !== action.requestItemId
-        )
         return {
           ...state,
           bookingRequestChart: state.bookingRequestChart.filter(
             item => item.id !== action.requestItemId
           ),
         }
+
+      case actionTypes.DATE_CHANGED:
+        console.log("DATE CHANGED REDUCER", action.date, {
+          ...state,
+          date: action.date,
+        })
+
+        return {
+          ...state,
+          date: action.date,
+        }
+
       default:
         return state
     }

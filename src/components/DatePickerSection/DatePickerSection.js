@@ -1,6 +1,6 @@
 // import "react-dates/initialize"
 
-import React, { useState } from "react"
+import React from "react"
 // import { useStateValue } from "../../../state"
 // import * as actionTypes from "../../../state/actionTypes"
 // import { DateRangePicker } from "react-dates"
@@ -11,8 +11,6 @@ import styles from "./datePicker.module.scss"
 
 export default () => {
   //   const [{ bookingRequestChart }, dispatch] = useStateValue()
-
-  const [startDate, setStartdate] = useState(startDate)
 
   return (
     <section className={styles.datePickerSection}>

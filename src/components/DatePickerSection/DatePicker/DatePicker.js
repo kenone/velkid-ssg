@@ -3,10 +3,13 @@
 // https://tresko.dev/create-a-custom-react-date-picker-in-10-minutes
 import { useState } from "react"
 import { useDatepicker, START_DATE } from "@datepicker-react/hooks"
+import { useStateValue } from "../../../state"
 import { jsx } from "@emotion/core"
 import Month from "./Month"
 import NavButton from "./NavButton"
 import DatepickerContext from "./datepickerContext"
+import * as actionTypes from "../../../state/actionTypes"
+
 function Datepicker() {
   const [state, setState] = useState({
     startDate: null,
@@ -33,11 +36,20 @@ function Datepicker() {
     focusedInput: state.focusedInput,
     onDatesChange: handleDateChange,
   })
+
+  const [{ date }, dispatch] = useStateValue()
+
+  const storeDate = data => {
+    dispatch({ type: actionTypes.DATE_CHANGED, date: data })
+  }
+
   function handleDateChange(data) {
     if (!data.focusedInput) {
       setState({ ...data, focusedInput: START_DATE })
+      storeDate(data)
     } else {
       setState(data)
+      storeDate(data)
     }
   }
 
@@ -56,16 +68,12 @@ function Datepicker() {
       }}
     >
       <div>
-        <strong>Focused input: </strong>
-        {state.focusedInput}
-      </div>
-      <div>
         <strong>Start date: </strong>
-        {state.startDate && state.startDate.toLocaleString()}
+        <p>{date.startDate && date.startDate.toLocaleString()}</p>
       </div>
       <div>
         <strong>End date: </strong>
-        {state.endDate && state.endDate.toLocaleString()}
+        <p>{date.endDate && date.endDate.toLocaleString()}</p>
       </div>
       <NavButton onClick={goToPreviousMonths}>Previous</NavButton>
       <NavButton onClick={goToNextMonths}>Next</NavButton>
