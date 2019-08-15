@@ -1,3 +1,7 @@
+@import "../../scss/styles";
+
 .datePickerSection {
-  background: pink;
+  @include outer-container-padding-x();
+  @include outer-container-padding-y();
+  background: white;
 }

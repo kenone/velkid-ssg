@@ -41,11 +41,6 @@ export default () => {
         }
 
       case actionTypes.DATE_CHANGED:
-        console.log("DATE CHANGED REDUCER", action.date, {
-          ...state,
-          date: action.date,
-        })
-
         return {
           ...state,
           date: action.date,

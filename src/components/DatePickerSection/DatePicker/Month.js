@@ -1,17 +1,37 @@
 /** @jsx jsx */
 import { useMonth } from "@datepicker-react/hooks"
+
 import { jsx } from "@emotion/core"
 import Day from "./Day"
-function Month({ year, month, firstDayOfWeek }) {
+import NavButton from "./NavButton"
+
+function Month({
+  year,
+  month,
+  firstDayOfWeek,
+  goToPreviousMonths,
+  goToNextMonths,
+}) {
   const { days, weekdayLabels, monthLabel } = useMonth({
     year,
     month,
     firstDayOfWeek,
   })
+
   return (
     <div>
-      <div css={{ textAlign: "center", margin: "0 0 16px" }}>
+      <div
+        css={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "space-between",
+          textAlign: "center",
+          margin: "0 0 16px",
+        }}
+      >
+        <NavButton onClick={goToPreviousMonths}>Back</NavButton>
         <strong>{monthLabel}</strong>
+        <NavButton onClick={goToNextMonths}>Next</NavButton>
       </div>
       <div
         css={{

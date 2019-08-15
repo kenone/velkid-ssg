@@ -4,9 +4,10 @@
 import { useState } from "react"
 import { useDatepicker, START_DATE } from "@datepicker-react/hooks"
 import { useStateValue } from "../../../state"
+import Moment from "react-moment"
+
 import { jsx } from "@emotion/core"
 import Month from "./Month"
-import NavButton from "./NavButton"
 import DatepickerContext from "./datepickerContext"
 import * as actionTypes from "../../../state/actionTypes"
 
@@ -52,7 +53,9 @@ function Datepicker() {
       storeDate(data)
     }
   }
-
+  if (date.startDate) {
+    console.log(new Date(date.startDate))
+  }
   return (
     <DatepickerContext.Provider
       value={{
@@ -67,32 +70,34 @@ function Datepicker() {
         onDateHover,
       }}
     >
-      <div>
-        <strong>Start date: </strong>
-        <p>{date.startDate && date.startDate.toLocaleString()}</p>
-      </div>
-      <div>
-        <strong>End date: </strong>
-        <p>{date.endDate && date.endDate.toLocaleString()}</p>
-      </div>
-      <NavButton onClick={goToPreviousMonths}>Previous</NavButton>
-      <NavButton onClick={goToNextMonths}>Next</NavButton>
       <div
         css={{
-          display: "grid",
-          margin: "32px 0 0",
-          gridTemplateColumns: `repeat(${activeMonths.length}, 300px)`,
-          gridGap: "0 64px",
+          maxWidth: "350px",
+          margin: "0 auto",
         }}
       >
-        {activeMonths.map(month => (
+        {
           <Month
-            key={`${month.year}-${month.month}`}
-            year={month.year}
-            month={month.month}
+            key={`${activeMonths[0].year}-${activeMonths[0].month}`}
+            year={activeMonths[0].year}
+            month={activeMonths[0].month}
             firstDayOfWeek={firstDayOfWeek}
+            goToPreviousMonths={goToPreviousMonths}
+            goToNextMonths={goToNextMonths}
           />
-        ))}
+        }
+
+        <div css={{ margin: "20px 0" }}>
+          <span css={{ display: "block" }}>
+            <strong>Start date: </strong>{" "}
+            {date.startDate && date.startDate.toLocaleString()}
+          </span>
+
+          <span>
+            <strong>End date: </strong>{" "}
+            {date.endDate && date.endDate.toLocaleString()}
+          </span>
+        </div>
       </div>
     </DatepickerContext.Provider>
   )
