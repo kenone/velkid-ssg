@@ -2,12 +2,16 @@
 
 // https://tresko.dev/create-a-custom-react-date-picker-in-10-minutes
 import { useState } from "react"
+import { jsx } from "@emotion/core"
 import { useDatepicker, START_DATE } from "@datepicker-react/hooks"
 import { useStateValue } from "../../../state"
-import Moment from "react-moment"
 
-import { jsx } from "@emotion/core"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons"
+
 import Month from "./Month"
+import DateRange from "./DateRange/DateRange"
+
 import DatepickerContext from "./datepickerContext"
 import * as actionTypes from "../../../state/actionTypes"
 
@@ -53,9 +57,15 @@ function Datepicker() {
       storeDate(data)
     }
   }
-  if (date.startDate) {
-    console.log(new Date(date.startDate))
+
+  const renderInstructions = () => {
+    if (!date.startDate) {
+      return <span>Select start date</span>
+    } else if (date.startDate && !date.endDate) {
+      return <span>Select end date</span>
+    }
   }
+
   return (
     <DatepickerContext.Provider
       value={{
@@ -86,18 +96,7 @@ function Datepicker() {
             goToNextMonths={goToNextMonths}
           />
         }
-
-        <div css={{ margin: "20px 0" }}>
-          <span css={{ display: "block" }}>
-            <strong>Start date: </strong>{" "}
-            {date.startDate && date.startDate.toLocaleString()}
-          </span>
-
-          <span>
-            <strong>End date: </strong>{" "}
-            {date.endDate && date.endDate.toLocaleString()}
-          </span>
-        </div>
+        <DateRange />
       </div>
     </DatepickerContext.Provider>
   )
