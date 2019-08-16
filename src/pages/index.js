@@ -2,7 +2,7 @@ import React from "react"
 import Hero from "../components/Hero/Hero"
 import SearchItems from "../components/SearchItems/SearchItems"
 import RentalItems from "../components/RentalItems/RentalItems"
-import DatePickerSection from "../components/DatePickerSection/DatePickerSection"
+import Summary from "../components/Summary/Summary"
 import { StateProvider } from "../state"
 import * as actionTypes from "../state/actionTypes"
 
@@ -13,6 +13,7 @@ export default () => {
     date: {
       startDate: null,
       endDate: null,
+      numberOfDays: null,
     },
   }
 
@@ -55,8 +56,8 @@ export default () => {
     <StateProvider initialState={initialState} reducer={reducer}>
       <Hero />
       <SearchItems />
-      <DatePickerSection />
       <RentalItems />
+      <Summary />
     </StateProvider>
   )
 }

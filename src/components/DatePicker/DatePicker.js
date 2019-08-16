@@ -4,16 +4,13 @@
 import { useState } from "react"
 import { jsx } from "@emotion/core"
 import { useDatepicker, START_DATE } from "@datepicker-react/hooks"
-import { useStateValue } from "../../../state"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons"
+import { useStateValue } from "../../state"
+import * as actionTypes from "../../state/actionTypes"
 
 import Month from "./Month"
 import DateRange from "./DateRange/DateRange"
 
 import DatepickerContext from "./datepickerContext"
-import * as actionTypes from "../../../state/actionTypes"
 
 function Datepicker() {
   const [state, setState] = useState({
@@ -45,6 +42,17 @@ function Datepicker() {
   const [{ date }, dispatch] = useStateValue()
 
   const storeDate = data => {
+    const oneDayInSeconds = 24 * 60 * 60 * 1000 // hours*minutes*seconds*milliseconds
+
+    if (data.startDate && data.endDate) {
+      const numberOfDays = Math.round(
+        Math.abs(
+          (data.startDate.getTime() - data.endDate.getTime()) / oneDayInSeconds
+        ) + 1
+      )
+      data.numberOfDays = numberOfDays
+    }
+
     dispatch({ type: actionTypes.DATE_CHANGED, date: data })
   }
 
@@ -55,14 +63,6 @@ function Datepicker() {
     } else {
       setState(data)
       storeDate(data)
-    }
-  }
-
-  const renderInstructions = () => {
-    if (!date.startDate) {
-      return <span>Select start date</span>
-    } else if (date.startDate && !date.endDate) {
-      return <span>Select end date</span>
     }
   }
 

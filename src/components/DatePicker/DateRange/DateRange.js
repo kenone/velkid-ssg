@@ -1,7 +1,7 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons"
-import { useStateValue } from "../../../../state"
+import { useStateValue } from "../../../state"
 import styles from "./dateRange.module.scss"
 
 const DateRange = () => {
